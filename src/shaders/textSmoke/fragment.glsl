@@ -19,25 +19,17 @@ void main() {
     smoke = smoothstep(3.4, 0.05, smoke);
 
     // Edges
-    smoke *= smoothstep(9.5, 1.9, vUv.x);//6.5, 0.9
-    smoke *= smoothstep(9.5, 0.0, vUv.x);//0.0, 0.3,
+    smoke *= smoothstep(10.5, 5.9, vUv.x);//6.5, 0.9
+    smoke *= smoothstep(10.5, 5.9, vUv.x);//0.0, 0.3,
 
     //FadeOUt
     float fadeOut = smoothstep(1.0, 0.0, vUv.y);
-    fadeOut = smoothstep(10.5, 0.1, vUv.y);
+    fadeOut = smoothstep(10.5, 0.2, vUv.y);
 
-    smoke -= fadeOut * uTime * 0.001;
-//------------------------
-  
-    // float fadeIn = smoothstep(0.0, 1.0, mod(uTime /  2.8, 6.0* vUv.y) ); 
-    // float fadeOut = smoothstep(1.0, 0.0, mod(uTime /  3.8, 0.5 / vUv.y)) * vUv.y ; 
-
-   
-
-    // smoke -=  fadeIn - (9.0 - fadeOut) / fadeOut + uTime * 0.09 ;
+    smoke -= fadeOut * uTime * 0.05;
 
     // Final color
-        gl_FragColor = vec4(0.6, 0.3, 0.2, smoke );
+        gl_FragColor = vec4(0.6, 0.3, 0.2, smoke);
 
     #include <tonemapping_fragment>
     #include <colorspace_fragment>

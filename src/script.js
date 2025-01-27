@@ -9,7 +9,6 @@ import textSmokeFragmentShader from "./shaders/textSmoke/fragment.glsl";
 
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
-import * as TWEEN from "@tweenjs/tween.js";
 
 /**
  * Base
@@ -60,8 +59,8 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 camera.position.x = 2;
-camera.position.y = 4;
-camera.position.z = 6;
+camera.position.y = 5;
+camera.position.z = 7;
 scene.add(camera);
 
 // Controls
@@ -136,6 +135,33 @@ const tsmokeMaterial = new THREE.ShaderMaterial({
 });
 const fontLoader = new FontLoader();
 
+// fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
+//   // Text
+//   const textGeometry = new TextGeometry("Hello World :)", {
+//     font: font,
+//     size: 0.2,
+//     height: 0.02,
+//     curveSegments: 12,
+//     bevelEnabled: true,
+//     bevelThickness: 0.03,
+//     bevelSize: 0.02,
+//     bevelOffset: 0,
+//     bevelSegments: 5,
+//   });
+//   textGeometry.center();
+//   textGeometry.translate(0, 3.5, 0);
+
+//   // Perlin texture
+//   const perlinTexture = textureLoader.load("./perlin.png");
+//   perlinTexture.wrapS = THREE.RepeatWrapping;
+//   perlinTexture.wrapT = THREE.RepeatWrapping;
+
+//   const text = new THREE.Mesh(textGeometry, tsmokeMaterial);
+//   text.position.y = 1.83;
+
+//   scene.add(text);
+// });
+
 // song lyrics
 const lyricsWithTimings = [
   { text: "Wherever you go, that's where I'll follow", time: 0 },
@@ -192,10 +218,9 @@ fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
     }, time * 1000);
   });
 });
-
-// /**
-//  * Animate
-//  */
+/**
+ * Animate
+ */
 const clock = new THREE.Clock();
 
 const tick = () => {
@@ -203,7 +228,7 @@ const tick = () => {
 
   // Update smoke
   smokeMaterial.uniforms.uTime.value = elapsedTime;
-  tsmokeMaterial.uniforms.uTime.value = elapsedTime;
+  tsmokeMaterial.uniforms.uTime.value = elapsedTime * 0.4;
 
   // Update controls
   controls.update();
