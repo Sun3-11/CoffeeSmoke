@@ -165,9 +165,9 @@ fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
   });
 
   textGeometry.center();
-  const text = new THREE.Mesh(textGeometry, tsmokeMaterial);
+  var text = new THREE.Mesh(textGeometry, tsmokeMaterial);
   text.position.y = 3.0;
-  text.material.opacity = 0;
+  text.material.opacity = 3;
   scene.add(text);
 
   // جدولة النصوص

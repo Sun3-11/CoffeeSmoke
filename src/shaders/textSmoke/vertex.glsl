@@ -20,8 +20,8 @@ void main() {
 
     // Wind
     vec2 windOffset = vec2(
-        texture(uPerlinTexture, vec2(0.25, uTime * 0.001)).r - 0.5,
-        texture(uPerlinTexture, vec2(0.25, uTime * 0.001)).r - 0.5
+        texture(uPerlinTexture, vec2(0.25, uTime * 0.01)).r - 0.5,
+        texture(uPerlinTexture, vec2(0.25, uTime * 0.01)).r - 0.5
     );
         windOffset *= pow(uv.y, 0.9) * 0.3;
 
@@ -34,7 +34,7 @@ void main() {
     newPosition.y += fadeAmount * 0.5 *  0.02; 
 
    //
-    float distortion = sin(position.y * 8.0 + uTime) * 0.09;
+    float distortion = sin(position.y * 3.0 + uTime) * 0.09;
     newPosition.x += distortion;
 
     // Final position
