@@ -196,10 +196,8 @@ fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
   text.material.opacity = 3;
   scene.add(text);
 
-  // جدولة النصوص
   lyricsWithTimings.forEach(({ text: line, time }) => {
     setTimeout(() => {
-      // تحديث النص
       const newTextGeometry = new TextGeometry(line, {
         font: font,
         size: 0.2,
