@@ -29,12 +29,12 @@ void main() {
     // smoke -= fadeOut * uTime * 0.05;
 //------------------------
   
-    float fadeIn = smoothstep(0.0, 1.0, mod(uTime /  2.8, 2.0* vUv.y) ); 
-    float fadeOut = smoothstep(1.0, 0.0, mod(uTime /  3.8, 0.5* vUv.y))* vUv.y ; 
+    float fadeIn = smoothstep(0.0, 1.0, mod(uTime /  2.8,0.0* vUv.x) ); 
+    float fadeOut = smoothstep(1.0, 0.0, mod(uTime /  3.8, 0.5* vUv.y)) ; 
 
    
 
-    smoke -=  fadeIn - (7.0 - fadeOut) / fadeOut + uTime * 0.07 ;
+    smoke -=  fadeIn - (9.0 - fadeOut) / fadeOut + uTime * 0.07 ;
 
     // Final color
         gl_FragColor = vec4(0.6, 0.3, 0.2,  fadeIn /smoke  /fadeOut );

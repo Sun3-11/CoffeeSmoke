@@ -38,7 +38,7 @@ void main() {
     newPosition.x += distortion;
 
     // Final position
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 2.3);
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 3.3);
 
     vUv = uv;
 }
